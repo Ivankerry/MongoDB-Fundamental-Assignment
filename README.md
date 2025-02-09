@@ -1,34 +1,41 @@
-#📚 MongoDB Fundamentals Assignment
+📚 MongoDB Fundamentals Assignment
+📌 Overview
+This project covers MongoDB setup, CRUD operations, data modeling, aggregation, and indexing
 
-##📌 Overview
-This project covers MongoDB setup, CRUD operations, data modeling, aggregation, and indexing.
 🛠️## Setup MongoDB
+
 1️⃣ Install MongoDB
 For Windows
 Download from MongoDB Download Center: https://www.mongodb.com/try/download/community
 Install and start MongoDB:
 mongod
+
 For macOS
 Run the following commands:
 brew tap mongodb/brew
 brew install mongodb-community
 brew services start mongodb-community
+
 For Linux (Ubuntu/Debian)
 Run the following commands:
 sudo apt-get update
 sudo apt-get install -y mongodb
 sudo systemctl start mongod
 sudo systemctl enable mongod
+
 2️⃣ Verify Installation
 Run the following command to check the installed MongoDB version:
 mongo --version
+
 3️⃣ Connect to MongoDB
 Run the following command:
 mongo
+
 📂 Database & Collection Creation
 Use the following commands to create a database and collection:
 use library
 db.createCollection("books")
+
 📜 Insert Data
 Insert multiple book records into the 'books' collection:
 
@@ -41,22 +48,32 @@ db.books.insertMany([
 ])
 
 🔍 Retrieve Data
+
 Retrieve all books:
+
 db.books.find().pretty()
 Find books by a specific author:
 db.books.find({ author: "Robert C. Martin" })
 Find books published after the year 2000:
 db.books.find({ publishedYear: { $gt: 2000 } })
+
+
 ✏️ Update Data
 Update the 'publishedYear' of a specific book:
+
 db.books.updateOne({ ISBN: "978-0201616224" }, { $set: { publishedYear: 2000 } })
 Add a new field 'rating' to all books:
 db.books.updateMany({}, { $set: { rating: 4.5 } })
+
+
 🗑️ Delete Data
+
 Delete a book by its ISBN:
 db.books.deleteOne({ ISBN: "978-0345339683" })
 Remove all books of a particular genre:
 db.books.deleteMany({ genre: "Self-Help" })
+
+
 🏗️ Data Modeling (E-Commerce Example)
 📌 Users Collection
 
@@ -85,27 +102,35 @@ db.orders.insertOne({
 })
 
 📊 Aggregation Pipeline
+
 Find the total number of books per genre:
 db.books.aggregate([{ $group: { _id: "$genre", totalBooks: { $sum: 1 } } }])
 Calculate the average publishedYear of all books:
 db.books.aggregate([{ $group: { _id: null, avgYear: { $avg: "$publishedYear" } } }])
 Identify the top-rated book:
 db.books.find().sort({ rating: -1 }).limit(1)
+
+
 ⚡ Indexing
 Create an index on the 'author' field to optimize queries:
 db.books.createIndex({ author: 1 })
+
 ✅ Benefits of Indexing in MongoDB
 - Speeds up query performance.
 - Reduces scan time for large datasets.
 - Optimizes filtering and sorting.
+
+- 
 🔬 Testing
 Using MongoDB Shell:
 use library
 db.books.find().pretty()
+
 Using MongoDB Compass:
 1. Open MongoDB Compass.
 2. Connect to mongodb://localhost:27017.
 3. Navigate to library → books and verify the records.
+
 📤 Submission to GitHub
 Run the following commands to push your work to GitHub:
 
