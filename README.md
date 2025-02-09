@@ -1,7 +1,8 @@
-📚 MongoDB Fundamentals Assignment
-📌 Overview
+#📚 MongoDB Fundamentals Assignment
+
+##📌 Overview
 This project covers MongoDB setup, CRUD operations, data modeling, aggregation, and indexing.
-🛠️ Setup MongoDB
+🛠️## Setup MongoDB
 1️⃣ Install MongoDB
 For Windows
 Download from MongoDB Download Center: https://www.mongodb.com/try/download/community
